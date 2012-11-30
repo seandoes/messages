@@ -20,12 +20,14 @@
     <%= f.text_area :copy %>
   </div>
   <div class="field">
-    <%= f.label :latitude %><br />
-    <%= f.text_field :latitude %>
+    Latitude:
+    <% @geo = Geocoder.search(request.ip) %>
+    <%= @geo[0].latitude %>
   </div>
   <div class="field">
-    <%= f.label :longitude %><br />
-    <%= f.text_field :longitude %>
+    Longitude:
+    <%= @geo[0].longitude %>
+
   </div>
   <div class="actions">
     <%= f.submit %>
