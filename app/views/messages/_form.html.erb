@@ -3,6 +3,9 @@
     <div id="error_explanation">
       <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
 
+
+
+
       <ul>
       <% @message.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -19,17 +22,26 @@
     <%= f.label :copy %><br />
     <%= f.text_area :copy %>
   </div>
-  <div class="field">
+  <div class="field" id="lati">
     Latitude:
-    <% @geo = Geocoder.search(request.ip) %>
-    <%= @geo[0].latitude %>
   </div>
-  <div class="field">
+  <div class="field" id="longi">
     Longitude:
-    <%= @geo[0].longitude %>
-
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<script>
+  if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(successFunction);
+  } else {
+      alert('It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it.');
+  }
+  
+  function successFunction(position) {
+      document.getElementById("lati").innerHTML = "Latitude: " + position.coords.latitude;
+      document.getElementById("longi").innerHTML = "Longitude: " + position.coords.longitude;          
+  }
+</script>
