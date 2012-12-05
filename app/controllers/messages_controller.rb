@@ -43,6 +43,8 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(params[:message])
+    @message.latitude = params[:message][:latitude]
+    @message.longitude = params[:message][:longitude]
 
 
     respond_to do |format|

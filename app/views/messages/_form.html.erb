@@ -25,7 +25,10 @@
   <div class="field" id="lati">
     Latitude:
   </div>
-  <div class="field" id="longi">
+  <div class="hiddenfield">
+    <%= f.hidden_field(:latitude, :value => "") %>
+  </div>
+  <div class="field" id="longi" name="message[longitude]">
     Longitude:
   </div>
   <div class="actions">
@@ -41,7 +44,12 @@
   }
   
   function successFunction(position) {
-      document.getElementById("lati").innerHTML = "Latitude: " + position.coords.latitude;
-      document.getElementById("longi").innerHTML = "Longitude: " + position.coords.longitude;          
+	var lati = position.coords.latitude;
+	var longi = position.coords.longitude;
+	document.getElementById("lati").innerHTML = "Latitude: " + lati;
+	document.getElementById("message_latitude").setAttribute("value", "settest");
+	document.getElementById("longi").innerHTML = "Longitude: " + longi;
+	return lati
+	return longi
   }
 </script>
