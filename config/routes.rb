@@ -1,6 +1,8 @@
 Messages::Application.routes.draw do
-  get "session/new"
-
+  get "session/new" => 'sessions#index'
+  
+  get "/" => 'messages#index'
+  
   resources :users
 
   resources :messages

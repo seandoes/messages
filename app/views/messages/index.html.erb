@@ -1,3 +1,19 @@
+<!-- map script -->
+<script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2WGPTC5HiNzzlyiTvp3j0a_KLB1SCc2s&sensor=true">
+</script>
+<script type="text/javascript">
+  function initialize() {
+    var mapOptions = {
+      center: new google.maps.LatLng(41.8887228, -87.6363863),
+      zoom: 5,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"),
+        mapOptions);
+  }
+</script>
+
 <h1>Listing messages</h1>
 
 <table>
@@ -27,3 +43,7 @@
 <br />
 
 <%= link_to 'New Message', new_message_path %>
+<br />
+
+<!-- map DIV -->
+<div onload="initialize()" id="map_canvas"></div>
