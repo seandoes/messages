@@ -1,5 +1,5 @@
 
-<h1  onload="initialize()">Listing messages</h1>
+<h1>Listing messages</h1>
 
 <table>
   <tr>
@@ -18,7 +18,7 @@
     <td><%= message.copy %></td>
     <td><%= message.latitude %></td>
     <td><%= message.longitude %></td>
-    <td><%= link_to 'Show', message %></td>
+    <td <%= link_to 'Show', message %></td>
     <td><%= link_to 'Edit', edit_message_path(message) %></td>
     <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
@@ -33,15 +33,21 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2WGPTC5HiNzzlyiTvp3j0a_KLB1SCc2s&sensor=false">
 </script>
 <script type="text/javascript">
-  function initialize() {
-    var mapOptions = {
-      center: new google.maps.LatLng(41.8887228, -87.6363863),
-      zoom: 13,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(document.getElementById("map_canvas"),
+	function initialize() {
+		var mapOptions = {
+      	center: new google.maps.LatLng(41.8887228, -87.6363863),
+      	zoom: 13,
+      	mapTypeId: google.maps.MapTypeId.ROADMAP
+    	};
+    	
+		var map = new google.maps.Map(document.getElementById("map_canvas"),
         mapOptions);
-  }
+	  	var marker = new google.maps.Marker({
+	      position: new google.maps.LatLng(41.8887228, -87.6363863),
+	      map: map,
+	      title:"Hello World!"
+	  	});
+	}
 </script>
 
 <div id="map_canvas" style="width:300px;height:300px;"><p>If you can see this, the script to render the map didn't fire</p></div>
