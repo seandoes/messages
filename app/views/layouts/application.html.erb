@@ -5,8 +5,12 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
+
+
 </head>
-<body>
+<!-- TODO support more appropriate maps callback -->
+<body onload="initialize()">
 
 <%= yield %>
 
